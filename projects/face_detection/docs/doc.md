@@ -1,19 +1,23 @@
-### **1. Simple CNN-Based Face Detection Model**
+### **1. AutoML-Enhanced Face Detection Model**
 
-This graph represents the architecture of the simple CNN-based face detection model:
+This graph represents the architecture with AutoML optimization:
 
 ```mermaid
 graph TD
-    A[Input Image] --> B[Convolutional Layer]
-    B --> C[ReLU Activation]
-    C --> D[Max Pooling]
-    D --> E[Convolutional Layer]
-    E --> F[ReLU Activation]
-    F --> G[Max Pooling]
-    G --> H[Flatten]
-    H --> I[Dense Layer]
-    I --> J[Dense Layer]
-    J --> K[Output: Bounding Box Coordinates]
+    A[Input Image] --> B[AutoKeras CNN Search]
+
+    subgraph AutoML Optimization
+    CB--> C[Automated Architecture Search]
+   CD -->iD[Best CNN Structure]
+    end
+
+    D --> E[Optimized Layers]
+    EG --> F[Flatten]
+    F --> G[Dense Layers]
+    G --> H[Output: Bounding Box Coordinates]
+
+    I[Optuna HPO] --> J[Optimal Hyperparameters]
+    J --> K[Training Process]
 ```
 
 ### Project Structure
@@ -24,13 +28,14 @@ face_detection/
 ├── data/
 │   ├── data_loader.py      # Handles loading and preprocessing of WIDER face dataset
 │   ├── wider_face_split/   # Dataset split information and annotations, including readme.txt
-│   ├── WIDER_test/        # Test dataset images
-│   ├── WIDER_train/      # Training dataset images
-│   └── WIDER_val/       # Validation dataset images
+│   ├── WIDER_test/         # Test dataset images
+│   ├── WIDER_train/        # Training dataset images
+│   └── WIDER_val/          # Validation dataset images
 │
 ├── model/
 │   ├── network.py          # Contains the CNN architecture implementation
 │   └── layers.py           # Custom layer implementations if needed
+│   └── automl.py           # AutoML integration (AutoKeras + Optuna)
 │
 ├── utils/
 │   ├── visualization.py    # Functions for visualizing results and training progress
@@ -38,9 +43,9 @@ face_detection/
 │
 ├── train.py                # Main training script
 ├── evaluate.py             # Evaluation script for testing model performance
-├── predict.py             # Script for making predictions on new images
-├── config.py              # Configuration parameters and hyperparameters
-└── requirements.txt       # Project dependencies
+├── predict.py              # Script for making predictions on new images
+├── config.py               # Configuration parameters and hyperparameters
+└── requirements.txt        # Project dependencies
 ```
 
 ### File Descriptions
@@ -63,9 +68,11 @@ face_detection/
 
 3. **model/network.py**
 
-   - CNN architecture implementation as shown in the diagram
+   - AutoKeras-based CNN architecture
    - Model class with forward pass logic
    - Loss function implementation
+   - Integration with AutoML components
+   - AutoKeras model adaptation
    - Training and validation step definitions
 
 4. **model/layers.py**
@@ -73,46 +80,58 @@ face_detection/
    - Custom layer implementations if needed
    - Any specialized architectures or modules
 
-5. **utils/visualization.py**
+5. **model/automl.py**
+
+   - AutoKeras setup and configuration
+   - Optuna hyperparameter optimization
+   - Simple ENAS integration options
+   - AutoML utilities and helpers
+
+6. **utils/visualization.py**
 
    - Training progress visualization
    - Loss and accuracy plotting
    - Bounding box visualization
    - Prediction result display
 
-6. **train.py**
+7. **train.py**
 
    - Training loop implementation
    - Model checkpointing
    - Training progress logging
+   - AutoML training coordination
    - Validation during training
 
-7. **evaluate.py**
+8. **evaluate.py**
 
    - Model evaluation on test set
    - Performance metrics calculation
    - Results logging and analysis
 
-8. **predict.py**
+9. **predict.py**
 
    - Inference pipeline
    - Single image prediction
    - Batch prediction capabilities
    - Result visualization
 
-9. **config.py**
+10. **config.py**
 
-   - Model hyperparameters
-   - Training configuration
-   - Data preprocessing parameters:
-     - Image size configuration (256x256)
-     - Normalization parameters
-     - Batch size
-     - Augmentation settings
-   - Path configurations
+    - AutoML search space configuration
+    - Optuna trial definitions
+    - Training configuration
+    - Data preprocessing parameters:
+      - Image size configuration (256x256)
+      - Normalization parameters
+      - Batch size
+      - Augmentation settings
+    - AutoKeras settings
+    - Path configurations
 
-10. **requirements.txt**
+11. **requirements.txt**
     - PyTorch/TensorFlow
+    - AutoKeras
+    - Optuna
     - NumPy, Pandas
     - OpenCV
     - Visualization libraries

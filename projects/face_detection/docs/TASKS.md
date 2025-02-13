@@ -6,6 +6,8 @@
 2. [ ] Create and fill requirements.txt with initial dependencies:
    - PyTorch
    - NumPy
+   - AutoKeras
+   - Optuna
    - Pandas
    - OpenCV
    - Matplotlib
@@ -33,16 +35,19 @@
 
 ## Phase 3: Model Architecture Implementation
 
-1. [ ] Setup basic CNN architecture in network.py:
-   - Implement convolutional layers
-   - Add ReLU activations
-   - Add max pooling layers
-   - Implement dense layers
-2. [ ] Define model class with forward pass
-3. [ ] Implement loss function for bounding box prediction
-4. [ ] Create custom layers if needed in layers.py
-5. [ ] Test model with dummy data
-6. [ ] Implement model save/load utilities
+1. [ ] Setup AutoML integration:
+   - Install and configure AutoKeras
+   - Setup Optuna for hyperparameter optimization
+   - Create automl.py with basic structure
+2. [ ] Implement AutoKeras CNN search:
+   - Define search space
+   - Setup basic AutoKeras model
+   - Configure architecture search parameters
+3. [ ] Setup Optuna trials:
+   - Define hyperparameter search space
+   - Create optimization objective
+   - Implement trial evaluation
+4. [ ] Test AutoML pipeline with dummy data
 
 ## Phase 4: Training Pipeline
 
@@ -50,11 +55,14 @@
    - Model hyperparameters
    - Training parameters
    - Data parameters
+   - AutoML configuration
 2. [ ] Implement training loop in train.py:
    - Batch processing
    - Loss calculation
    - Backpropagation
    - Model checkpointing
+   - AutoKeras model training
+   - Optuna optimization loop
 3. [ ] Add validation during training
 4. [ ] Implement training metrics logging
 5. [ ] Add early stopping mechanism
@@ -97,6 +105,7 @@
    - Model pruning
    - Quantization
    - Batch size tuning
+   - Fine-tune best AutoML model
 3. [ ] Profile code and optimize bottlenecks
 4. [ ] Add error handling and logging
 
