@@ -6,8 +6,9 @@
 2. [ ] Create and fill requirements.txt with initial dependencies:
    - PyTorch
    - NumPy
-   - AutoKeras
    - Optuna
+   - torch-na
+     s
    - Pandas
    - OpenCV
    - Matplotlib
@@ -35,15 +36,17 @@
 
 ## Phase 3: Model Architecture Implementation
 
-1. [ ] Setup AutoML integration:
-   - Install and configure AutoKeras
+1. [ ] Setup MicroNAS integration:
+   - Install torch-nas
    - Setup Optuna for hyperparameter optimization
-   - Create automl.py with basic structure
-2. [ ] Implement AutoKeras CNN search:
-   - Define search space
-   - Setup basic AutoKeras model
-   - Configure architecture search parameters
-3. [ ] Setup Optuna trials:
+   - Create nas.py with basic structure
+2. [ ] Configure MicroNAS search:
+   - Define mobile-friendly search space
+   - Setup resource constraints
+   - Configure lightweight architecture parameters
+   - Set memory usage limits
+   - Define efficiency metrics
+3. [ ] Setup basic Optuna trials:
    - Define hyperparameter search space
    - Create optimization objective
    - Implement trial evaluation
@@ -55,14 +58,14 @@
    - Model hyperparameters
    - Training parameters
    - Data parameters
-   - AutoML configuration
+   - NAS configuration
 2. [ ] Implement training loop in train.py:
    - Batch processing
    - Loss calculation
    - Backpropagation
    - Model checkpointing
-   - AutoKeras model training
-   - Optuna optimization loop
+   - MicroNAS architecture search
+   - Basic Optuna optimization
 3. [ ] Add validation during training
 4. [ ] Implement training metrics logging
 5. [ ] Add early stopping mechanism
@@ -92,6 +95,7 @@
    - Batch prediction
    - Result visualization
 2. [ ] Implement efficient inference optimizations
+   - Focus on mobile-friendly inference
 3. [ ] Add support for different input formats
 4. [ ] Create demo script for real-time webcam detection
 
@@ -105,7 +109,8 @@
    - Model pruning
    - Quantization
    - Batch size tuning
-   - Fine-tune best AutoML model
+   - Memory optimization
+   - Fine-tune best lightweight model
 3. [ ] Profile code and optimize bottlenecks
 4. [ ] Add error handling and logging
 

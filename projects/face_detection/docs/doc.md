@@ -1,22 +1,22 @@
-### **1. AutoML-Enhanced Face Detection Model**
+### **1. MicroNAS Face Detection Model**
 
-This graph represents the architecture with AutoML optimization:
+This graph represents the lightweight architecture with MicroNAS and Optuna optimization:
 
 ```mermaid
 graph TD
-    A[Input Image] --> B[AutoKeras CNN Search]
+    A[Input Image] --> B[MicroNAS Search]
 
-    subgraph AutoML Optimization
-    CB--> C[Automated Architecture Search]
-   CD -->iD[Best CNN Structure]
+    subgraph Lightweight Architecture Search
+    B --> C[Mobile-Friendly Architecture Search]
+   C --> D[Efficient CNN Structure]
     end
 
     D --> E[Optimized Layers]
-    EG --> F[Flatten]
+    E --> F[Flatten]
     F --> G[Dense Layers]
     G --> H[Output: Bounding Box Coordinates]
 
-    I[Optuna HPO] --> J[Optimal Hyperparameters]
+    I[Optuna Basic HPO] --> J[Lightweight Hyperparameters]
     J --> K[Training Process]
 ```
 
@@ -35,7 +35,7 @@ face_detection/
 ├── model/
 │   ├── network.py          # Contains the CNN architecture implementation
 │   └── layers.py           # Custom layer implementations if needed
-│   └── automl.py           # AutoML integration (AutoKeras + Optuna)
+│   └── nas.py             # MicroNAS and Optuna integration
 │
 ├── utils/
 │   ├── visualization.py    # Functions for visualizing results and training progress
@@ -60,19 +60,21 @@ face_detection/
 
 2. **utils/preprocessing.py**
 
-   - Image preprocessing functions:
+   - Lightweight image preprocessing:
      - Resizing images to consistent size (256x256 pixels)
      - Normalizing pixel values (dividing by 255 to scale between 0 and 1)
    - Data augmentation utilities
+   - Memory-efficient processing
    - Preprocessing script (preprocess_and_save) to save images and annotations as a structured .npz file
 
 3. **model/network.py**
 
-   - AutoKeras-based CNN architecture
+   - MicroNAS-based lightweight CNN
    - Model class with forward pass logic
    - Loss function implementation
-   - Integration with AutoML components
-   - AutoKeras model adaptation
+   - Mobile-friendly architecture components
+   - Integration with NAS components
+   - Efficient model structure
    - Training and validation step definitions
 
 4. **model/layers.py**
@@ -80,12 +82,12 @@ face_detection/
    - Custom layer implementations if needed
    - Any specialized architectures or modules
 
-5. **model/automl.py**
+5. **model/nas.py**
 
-   - AutoKeras setup and configuration
+   - MicroNAS configuration and search space
    - Optuna hyperparameter optimization
-   - Simple ENAS integration options
-   - AutoML utilities and helpers
+   - Basic hyperparameter search
+   - Efficient architecture search utilities
 
 6. **utils/visualization.py**
 
@@ -99,7 +101,7 @@ face_detection/
    - Training loop implementation
    - Model checkpointing
    - Training progress logging
-   - AutoML training coordination
+   - NAS search coordination
    - Validation during training
 
 8. **evaluate.py**
@@ -117,22 +119,23 @@ face_detection/
 
 10. **config.py**
 
-    - AutoML search space configuration
-    - Optuna trial definitions
+    - MicroNAS search space (mobile-friendly)
+    - Basic Optuna trial definitions
     - Training configuration
     - Data preprocessing parameters:
       - Image size configuration (256x256)
       - Normalization parameters
       - Batch size
       - Augmentation settings
-    - AutoKeras settings
+    - Resource optimization settings
     - Path configurations
 
 11. **requirements.txt**
     - PyTorch/TensorFlow
-    - AutoKeras
+    - torch-nas (MicroNAS)
     - Optuna
     - NumPy, Pandas
     - OpenCV
     - Visualization libraries
+    - Memory profiler (optional)
     - Other dependencies
